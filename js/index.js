@@ -1,6 +1,6 @@
 //Clock
 $(document).ready(function () {
-    setInterval(function () {
+    var setClock = function () {
         var now = new Date();
         var hours = now.getHours();
         var minutes = now.getMinutes();
@@ -23,8 +23,12 @@ $(document).ready(function () {
         } else {
             var ap = "a";
         }
+
         document.getElementById('clock').innerHTML = hours + ":" + minutes + ap;
-    }, 1000);
+    };
+
+    setInterval(setClock, 1000);
+    setClock();
 });
 
 $(".cont").ready(function () {
@@ -34,7 +38,6 @@ $(".cont").ready(function () {
         var div = $(window).width();
         $(".cont").css("height", height + 30);
         $(".foreground").css("top", -top + 15);
-        //$("#clock").css("margin-top", -top - div / 2.3);
         $(".text").css("margin-top", top - 60);
     }, 0.01);
 });
@@ -47,7 +50,7 @@ $(document).ready(function () {
         var dusk = '#036';
 
         var mood = new Date();
-        var hour = mood.getHours();
+        var hour = mood.getSeconds() % 24; //mood.getHours();
         if ((hour > 5 && hour < 8) || (hour > 17 && hour < 19)) {
             $('body').css('background', dawn);
             $('.trees').css('fill', dawn);
@@ -55,7 +58,7 @@ $(document).ready(function () {
             $('.sky-day').css('opacity', '1');
             $('.hills').css('fill', '#c66');
         }
-        //Day
+        // Day
         else if (hour > 7 && hour < 18) {
             $('body').css('background', day);
             $('.trees').css('fill', day);
@@ -63,12 +66,12 @@ $(document).ready(function () {
             $('.sky-day').css('opacity', '1');
             $('.hills').css('fill', '#db9');
         }
-        //Night
+        // Night
         else {
             $('body').css('background', dusk);
             $('.trees').css('fill', dusk);
             $('.sky-day').css('opacity', '0');
             $('.hills').css('fill', '#0be');
         }
-    });
+    }, 1000 * 60); // 1 Minute
 });
