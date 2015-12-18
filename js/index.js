@@ -44,13 +44,13 @@ $(".cont").ready(function () {
 
 //Color settings
 $(document).ready(function () {
-    setInterval(function () {
+    var setMood = function () {
         var dawn = '#78d';
         var day = '#1bf';
         var dusk = '#036';
 
         var mood = new Date();
-        var hour = mood.getSeconds() % 24; //mood.getHours();
+        var hour = mood.getHours();
         if ((hour > 5 && hour < 8) || (hour > 17 && hour < 19)) {
             $('body').css('background', dawn);
             $('.trees').css('fill', dawn);
@@ -73,5 +73,8 @@ $(document).ready(function () {
             $('.sky-day').css('opacity', '0');
             $('.hills').css('fill', '#0be');
         }
-    }, 1000 * 60); // 1 Minute
+    };
+
+    setInterval(setMood, 1000 * 60); // 1 Minute
+    setMood();
 });
