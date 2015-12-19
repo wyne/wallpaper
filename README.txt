@@ -1,15 +1,17 @@
-A Pen created at CodePen.io. You can find this one at http://codepen.io/wyne/pen/rxewpq.
+# wallpaper
 
- Liquid layout, set to change every 20s.
+## Install
 
-Inspired by https://dribbble.com/shots/2197810-Silent-night
+* Install [qdesktop](https://github.com/qvacua/qdesktop)
+* Preferences | URL [[http://wyne.github.io/wallpaper/]]
 
-Feedback is always appreciated, thanks!
+## Customize
 
-Forked from [Julia Lim](http://codepen.io/juliamlim/)'s Pen [Time Changing Landscape](http://codepen.io/juliamlim/pen/zrYyVy/).
+Clone this repo locally and point qdesktop to a `file://` url.
 
-Forked from [Julia Lim](http://codepen.io/juliamlim/)'s Pen [Time Changing Landscape](http://codepen.io/juliamlim/pen/zrYyVy/).
+# Credits
 
-Forked from [Julia Lim](http://codepen.io/juliamlim/)'s Pen [Time Changing Landscape](http://codepen.io/juliamlim/pen/zrYyVy/).
+Inspired by bcezrstl on reddit:
+https://www.reddit.com/r/unixporn/comments/3x9pir/mate_time_of_day_changing_wallpaper_light_and_flat/
 
 Forked from [Julia Lim](http://codepen.io/juliamlim/)'s Pen [Time Changing Landscape](http://codepen.io/juliamlim/pen/zrYyVy/).

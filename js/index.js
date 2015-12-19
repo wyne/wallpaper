@@ -1,9 +1,24 @@
-//Clock
+// Clock
 $(document).ready(function () {
+    var FLASH_ON_MINUTE = true;
+    var FLASH_ON_HOUR = true;
+
+    var clock = document.getElementById('clock');
+
+    clock.addEventListener('animationend', function (){
+        clock.classList.remove('flash');
+        clock.classList.remove('drop');
+    });
+
+    var flashClock = function () {
+        clock.classList.add('flash');
+    };
+
     var setClock = function () {
         var now = new Date();
         var hours = now.getHours();
         var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
 
         if (hours < 10) {
             hours = "0" + hours;
@@ -22,6 +37,12 @@ $(document).ready(function () {
             var ap = "a";
         } else {
             var ap = "a";
+        }
+
+        if (seconds % 59 == 0 && hours % 59 == 0 && FLASH_ON_HOUR) {
+            flashClock();
+        } else if (seconds % 59 == 0 && FLASH_ON_MINUTE) {
+            flashClock();
         }
 
         document.getElementById('clock').innerHTML = hours + ":" + minutes + ap;
