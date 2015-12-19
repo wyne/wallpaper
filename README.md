@@ -2,6 +2,8 @@
 
 An animated SVG background image with clock.
 
+Full preview with animations: http://wyne.github.io/wallpaper/
+
 ![screenshot](screenshot/screenshot.png)
 
 ## Install
