@@ -1,9 +1,13 @@
 # wallpaper
 
+An animated SVG background image with clock.
+
+![screenshot](screenshot/screenshot.png)
+
 ## Install
 
 * Install [qdesktop](https://github.com/qvacua/qdesktop)
-* Preferences | URL [[http://wyne.github.io/wallpaper/]]
+* Preferences | Set URL to http://wyne.github.io/wallpaper/
 
 ## Customize
 
