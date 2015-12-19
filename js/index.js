@@ -63,7 +63,7 @@ $(".cont").ready(function () {
     }, 0.01);
 });
 
-//Color settings
+// Color settings
 $(document).ready(function () {
     var setMood = function () {
         var dawn = '#78d';
@@ -72,12 +72,15 @@ $(document).ready(function () {
 
         var mood = new Date();
         var hour = mood.getHours();
+
+        // Dawn
         if ((hour > 5 && hour < 8) || (hour > 17 && hour < 19)) {
             $('body').css('background', dawn);
             $('.trees').css('fill', dawn);
             $('.sky-dawn').css('opacity', '1');
             $('.sky-day').css('opacity', '1');
             $('.hills').css('fill', '#c66');
+            $('.hills').css('opacity', '1');
         }
         // Day
         else if (hour > 7 && hour < 18) {
@@ -86,6 +89,7 @@ $(document).ready(function () {
             $('.sky-dawn').css('opacity', '0');
             $('.sky-day').css('opacity', '1');
             $('.hills').css('fill', '#db9');
+            $('.hills').css('opacity', '1');
         }
         // Night
         else {
@@ -93,6 +97,7 @@ $(document).ready(function () {
             $('.trees').css('fill', dusk);
             $('.sky-day').css('opacity', '0');
             $('.hills').css('fill', '#0be');
+            $('.hills').css('opacity', '1');
         }
     };
 

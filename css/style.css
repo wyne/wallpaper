@@ -64,7 +64,7 @@ body {
   z-index: 10;
 }
 
-.trees {
+.animate.grow {
   animation-name: grow;
   animation-duration: 5s;
   transform: translateY(600px);
@@ -75,6 +75,7 @@ body {
   transition-duration: 5s;
   transition-timing-function: linear;
   transition-delay: 100ms;
+  opacity: 0;
 }
 
 #clock {
@@ -153,6 +154,7 @@ body {
   animation-duration: 2s;
   animation-fill-mode: forwards;
   animation-name: drop;
+  animation-timing-function: ease-out;
   transform: translateY(-200px);
 }
 @keyframes drop {
