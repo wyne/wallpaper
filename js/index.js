@@ -1,4 +1,3 @@
-// Clock
 $(document).ready(function () {
     var FLASH_ON_MINUTE = true;
     var FLASH_ON_HOUR = true;
@@ -10,46 +9,60 @@ $(document).ready(function () {
         clock.classList.remove('drop');
     });
 
+    var setWeather = function() {
+        $.simpleWeather({
+            location: '94114',
+            woeid: '',
+            unit: 'f',
+            success: function (weather) {
+                var updated = moment(Date.parse(weather.updated));
+                var $weather = $('#weather');
+
+                $('#temp .value').show().html(weather.temp);
+                $weather.find('.text').show().html(weather.currently);
+                $weather.find('.icon').show().html('<i class="wi wi-yahoo-' + weather.code + '"/>');
+                $weather.find('.updated').show().html(updated.format('[(]h:mm[)]'));
+                $('#sunrise').html(weather.sunrise);
+                $('#sunset').html(weather.sunset);
+            },
+            error: function (error) {
+                $("#temp").hide();
+                $("#weather").hide();
+            }
+        });
+    };
+
     var flashClock = function () {
         clock.classList.add('flash');
     };
 
     var setClock = function () {
         var now = new Date();
-        var hours = now.getHours();
-        var minutes = now.getMinutes();
-        var seconds = now.getSeconds();
+        var m = moment(now);
 
-        if (hours < 10) {
-            hours = "0" + hours;
-        }
-        if (minutes < 10) {
-            minutes = "0" + minutes;
-        }
+        var hours = m.hours();
+        var minutes = m.minutes();
+        var seconds = m.seconds();
 
-        if (hours > 12) {
-            var hours = hours - 12;
-            var ap = "p";
-        } else if (hours == 12) {
-            var ap = "p";
-        } else if (hours == 24) {
-            var hours = hours - 12;
-            var ap = "a";
-        } else {
-            var ap = "a";
-        }
+        var beforeHour = seconds % 59 == 0 && hours % 59 == 0;
+        var beforeMinute = seconds % 59 == 0;
 
-        if (seconds % 59 == 0 && hours % 59 == 0 && FLASH_ON_HOUR) {
+        if (beforeHour && FLASH_ON_HOUR) {
             flashClock();
-        } else if (seconds % 59 == 0 && FLASH_ON_MINUTE) {
+        } else if (beforeMinute && FLASH_ON_MINUTE) {
             flashClock();
         }
 
-        document.getElementById('clock').innerHTML = hours + ":" + minutes + ap;
+        var timeString = m.format('h:mma');
+        document.getElementById('clock').innerHTML = timeString.substr(0, timeString.length - 1);
     };
 
     setInterval(setClock, 1000);
     setClock();
+
+    setInterval(setWeather, 1000 * 60 * 15); // 15 minutes
+    setWeather();
+
 });
 
 $(".cont").ready(function () {
@@ -59,7 +72,6 @@ $(".cont").ready(function () {
         var div = $(window).width();
         $(".cont").css("height", height + 30);
         $(".foreground").css("top", -top + 15);
-        $(".text").css("margin-top", top - 60);
     }, 0.01);
 });
 
