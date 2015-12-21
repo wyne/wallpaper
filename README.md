@@ -1,6 +1,6 @@
 # wallpaper
 
-An animated SVG background image with clock.
+An animated SVG background image with clock, current weather, and sunrise/sunset.
 
 Full preview with animations: http://wyne.github.io/wallpaper/
 
